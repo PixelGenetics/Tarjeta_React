@@ -3,6 +3,7 @@ import imagen from './assets/Watermelon_Outline.svg'
 import './App.css'
 
 function App () {
+  const [show,setShow] = useState(true);
 
   return (
     
@@ -24,24 +25,24 @@ function App () {
           
           <footer>
 
-          <div  className='h-10 bg-[#C63535] relative'>
+          <div  className={`h-10 ${show ? 'bg-white' : 'bg-[#C63535]'} relative`}>
 
-          {/* 
-            <button className='absolute bottom-0 -top-6 right-4 rounded-[50%] w- h-12 flex justify-center bg-[#FFBE44]' >
-            <svg className='w-6 h-7 m-3 ' fill='#C63535' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"/></svg>
-            </button>
-          */}
-
-            <button className='absolute bottom-0 -top-6  flex justify-center right-[130px] rounded-full w-36 h-12 bg-[#FFBE44]' >
-            <p className='mt-3 text-[#C63535] text-left'>CONTACT ME!</p>
+            <button onClick={() => setShow(!show)} className={`${show ? 'right-[130px] rounded-full w-36 h-12' : 'right-4 rounded-[50%] h-12'} absolute button-0 -top-6 flex justify-center bg-[#FFBE44] `} >
+            <svg className={`${show ? 'hidden' : 'w-6 h-7 m-3'}`} fill='#C63535' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M201.4 137.4c12.5-12.5 32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L224 205.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l160-160z"/></svg>
+            <p className='mt-3 text-[#C63535] text-left'>{show ? 'CONTACT ME!' : ''}</p>
             </button>
 
-            <p className='flex ml-4 top-2'>CONTACT ME</p>
+            {
+              show ? null : <p className='flex ml-4 pt-2 text-white'>CONTACT ME</p>
+            }
+
           </div>
           </footer>
         </div>
 
-        <div className='m-auto flex flex-col gap-2 '>
+
+        { show ? null : ( 
+        <div   className='m-auto flex flex-col gap-2 '>
           <button /*Email*/ className='border-2 rounded-md shadow-md w-[420px] h-24 flex bg-gray-100'>
               <svg className='w-24 h-16 m-3 mt-3 ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
                 <div className='mt-6 ml-11 '>
@@ -66,8 +67,8 @@ function App () {
                 </div>
           </button>
         </div>  
-
-        
+        )
+        }
 
       </div>
     </>
